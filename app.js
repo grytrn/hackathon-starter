@@ -65,7 +65,8 @@ app.use(expressStatusMonitor());
 app.use(compression());
 app.use(sass({
   src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public')
+  dest: path.join(__dirname, 'public'),
+  log: function (severity, key, value) { winston.log(severity, 'node-saas-middleware   %s : %s', key, value); }
 }));
 app.use(logger('dev'));
 app.use(bodyParser.json());
