@@ -2,13 +2,19 @@ extends layout
 
 block content
   video(playsinline='', autoplay='')
-    source(src='video.mp4', type='video/mp4')
+    source(src='assets/video.mp4', type='video/mp4')
   h1 Türkiye için Ortak Payda'da buluşma zamanı!
   //p.lead A boilerplate for Node.js web applications.
   .row
     .col-sm-12
       p Artık yeter! Ülkemizde yaşayan neredeyse her vatandaş anladı ki, artık böyle devam edemeyecek Türkiye. 
-      h3 Yol ayrımındayız!
-      p Ne görüşte olursa olsun her vatandaşın önünde iki seçenek var: Ya toplum olarak uzlaşıp kenetleceğiz, ya da ortadoğunun istikrarsızlık ve savaş bataklığınına çekilen sıradaki ülkelerden biri olacağız.
-      p
-        a.btn.btn-default(href='#', role='link') View details »
+      .row
+        .col-sm-6
+          h3 Hayal edin!
+          p Hoşgörülü bir toplumda yaşadığınızı... Herkesin kendi istediği gibi yaşayabildiği, ama kendi doğrularını başkalarına kabul ettirmeye çalışmadığı bir toplumda. 
+
+        .col-sm-6
+          h3 Yol ayrımındayız!
+          p Ne görüşte olursa olsun her vatandaşın önünde iki seçenek var: Ya toplum olarak uzlaşıp kenetleceğiz, ya da ortadoğunun istikrarsızlık ve savaş bataklığınına çekilen sıradaki ülkelerden biri olacağız.
+  p
+    a.btn.btn-success(href='#', role='button') Şimdi Katıl?
