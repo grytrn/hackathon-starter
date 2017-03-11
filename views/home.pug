@@ -1,10 +1,10 @@
 extends layout
 
 block content
-  video(playsinline='', autoplay='')
+  video(playsinline='', autoplay='', muted='')
     source(src='assets/video.mp4', type='video/mp4')
+    source(src='assets/video.webm', type='video/webm')
   h1 Türkiye için Ortak Payda'da buluşma zamanı!
-  //p.lead A boilerplate for Node.js web applications.
   .row
     .col-sm-12
       p Artık yeter! Ülkemizde yaşayan neredeyse her vatandaş anladı ki, artık böyle devam edemeyecek Türkiye. 
