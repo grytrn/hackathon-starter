@@ -3,18 +3,18 @@
 const async = require('async');
 const request = require('request');
 const cheerio = require('cheerio');
-const graph = require('fbgraph');
-const LastFmNode = require('lastfm').LastFmNode;
-const tumblr = require('tumblr.js');
-const GitHub = require('github');
 const Twit = require('twit');
-const stripe = require('stripe')(process.env.STRIPE_SKEY);
+/*const stripe = require('stripe')(process.env.STRIPE_SKEY);
+ const ig = require('instagram-node').instagram();
+ const LastFmNode = require('lastfm').LastFmNode;
+ const tumblr = require('tumblr.js');
+ const GitHub = require('github');
+ const graph = require('fbgraph');
 const twilio = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 const Linkedin = require('node-linkedin')(process.env.LINKEDIN_ID, process.env.LINKEDIN_SECRET, process.env.LINKEDIN_CALLBACK_URL);
 const clockwork = require('clockwork')({ key: process.env.CLOCKWORK_KEY });
 const paypal = require('paypal-rest-sdk');
 const lob = require('lob')(process.env.LOB_KEY);
-const ig = require('instagram-node').instagram();
 const foursquare = require('node-foursquare')({
   secrets: {
     clientId: process.env.FOURSQUARE_ID,
@@ -22,7 +22,7 @@ const foursquare = require('node-foursquare')({
     redirectUrl: process.env.FOURSQUARE_REDIRECT_URL
   }
 });
-
+ */
 /**
  * GET /api
  * List of API examples.
