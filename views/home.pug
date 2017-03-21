@@ -11,10 +11,14 @@ block content
       .row
         .col-sm-6
           h3 Hayal edin!
-          p Hoşgörülü bir toplumda yaşadığınızı... Herkesin kendi istediği gibi yaşayabildiği, ama kendi doğrularını başkalarına kabul ettirmeye çalışmadığı bir toplumda. 
+          p Hoşgörülü bir toplumda yaşadığınızı... Herkesin kendi istediği gibi yaşayabildiği, ama kendi doğrularını başkalarına kabul ettirmeye çalışmadığı bir toplumda.
 
         .col-sm-6
           h3 Yol ayrımındayız!
           p Ne görüşte olursa olsun her vatandaşın önünde iki seçenek var: Ya toplum olarak uzlaşıp kenetleceğiz, ya da ortadoğunun istikrarsızlık ve savaş bataklığınına çekilen sıradaki ülkelerden biri olacağız.
-  p
-    a.btn.btn-success(href='#', role='button') Şimdi Katıl?
+  if !user
+    .row
+      .col-sm-2
+        a.btn.btn-success(href='/signup', role='button') Şimdi Katıl?
+      .col-sm-2
+        a.btn.btn-success(href='/login', role='button') Giriş yap!
