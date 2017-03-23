@@ -30,6 +30,7 @@ $brand-danger:          #E74C3C !default;
 $body-bg:               #05c8da !default;
 //** Global text color on `<body>`.
 $text-color:            $brand-primary !default;
+$input-text-color:		#000;
 
 //** Global textual link color.
 $link-color:            $brand-info !default;
@@ -88,8 +89,8 @@ $icon-font-svg-id:        "glyphicons_halflingsregular" !default;
 //
 //## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
-$padding-base-vertical:     10px !default;
-$padding-base-horizontal:   15px !default;
+$padding-base-vertical:     5px !default;
+$padding-base-horizontal:   10px !default;
 
 $padding-large-vertical:    18px !default;
 $padding-large-horizontal:  27px !default;
@@ -146,11 +147,11 @@ $table-border-color:            $gray-lighter !default;
 $btn-font-weight:                normal !default;
 
 $btn-default-color:              #fff !default;
-$btn-default-bg:                 $gray !default;
+$btn-default-bg:                 lighten(#05c8da, 15%) !default;
 $btn-default-border:             $btn-default-bg !default;
 
 $btn-primary-color:              $btn-default-color !default;
-$btn-primary-bg:                 $brand-primary !default;
+$btn-primary-bg:                 $btn-default-bg !default;
 $btn-primary-border:             $btn-primary-bg !default;
 
 $btn-success-color:              $btn-default-color !default;
@@ -187,7 +188,7 @@ $input-bg:                       #fff !default;
 $input-bg-disabled:              $gray-lighter !default;
 
 //** Text color for `<input>`s
-$input-color:                    $text-color !default;
+$input-color:                    $input-text-color !default;
 //** `<input>` border color
 $input-border:                   #dce4ec !default;
 
@@ -244,7 +245,7 @@ $dropdown-divider-bg:            #e5e5e5 !default;
 //** Dropdown link text color.
 $dropdown-link-color:            $gray-dark !default;
 //** Hover color for dropdown links.
-$dropdown-link-hover-color:      #fff !default;
+$dropdown-link-hover-color:      $gray-light !default;
 //** Hover background for dropdown links.
 $dropdown-link-hover-bg:         $component-active-bg !default;
 
@@ -421,7 +422,7 @@ $navbar-inverse-toggle-border-color:        darken($navbar-inverse-bg, 10%) !def
 
 //=== Shared nav styles
 $nav-link-padding:                          10px 15px !default;
-$nav-link-hover-bg:                         $gray-lighter !default;
+$nav-link-hover-bg:                         rgba($gray-darker, .5) !default;
 
 $nav-disabled-link-color:                   $gray-light !default;
 $nav-disabled-link-hover-color:             $gray-light !default;

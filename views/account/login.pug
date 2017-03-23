@@ -2,7 +2,7 @@ extends ../layout
 
 block content
   .page-header
-    h3 Sign in
+    h3 Giriş Yap
   form.form-horizontal(method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
@@ -24,21 +24,6 @@ block content
         hr
     .form-group
       .col-sm-offset-3.col-sm-7
-        a.btn.btn-block.btn-facebook.btn-social(href='/auth/facebook')
-          i.fa.fa-facebook
-          | Facebook ile Giriş Yap
         a.btn.btn-block.btn-twitter.btn-social(href='/auth/twitter')
           i.fa.fa-twitter
           | Twitter ile Giriş Yap
-        a.btn.btn-block.btn-google.btn-social(href='/auth/google')
-          i.fa.fa-google-plus
-          | Google ile Giriş Yap
-        a.btn.btn-block.btn-github.btn-social(href='/auth/github')
-          i.fa.fa-github
-          | GitHub ile Giriş Yap
-        a.btn.btn-block.btn-linkedin.btn-social(href='/auth/linkedin')
-          i.fa.fa-linkedin
-          | LinkedIn ile Giriş Yap
-        a.btn.btn-block.btn-instagram.btn-social(href='/auth/instagram')
-          i.fa.fa-instagram
-          | Instagram ile Giriş Yap
