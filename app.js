@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 const express = require('express');
+const https = require('https');
 const compression = require('compression');
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -19,8 +20,14 @@ const expressValidator = require('express-validator');
 const expressStatusMonitor = require('express-status-monitor');
 const sass = require('node-sass-middleware');
 const multer = require('multer');
-
+const fs = require('fs');
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
+
+const options = {
+  key: fs.readFileSync('keys/key.pem'),
+  cert: fs.readFileSync('keys/cert.pem')
+  //,ca: fs.readFileSync("/etc/letsencrypt/archive/example.com/chain1.pem")
+};
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -222,10 +229,10 @@ app.use(errorHandler());
 
 /**
  * Start Express server.
- */
+ 
 app.listen(app.get('port'), () => {
   console.log('%s App is running at port: %d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
   console.log('  Press CTRL-C to stop\n');
-});
-
+});*/
+https.createServer(options, app).listen(443);
 module.exports = app;

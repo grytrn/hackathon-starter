@@ -35,9 +35,9 @@ exports.postContact = (req, res) => {
   }
 
   const mailOptions = {
-    to: 'your@email.com',
+    to: 'admin@ortakpazda.biz',
     from: `${req.body.name} <${req.body.email}>`,
-    subject: 'Contact Form | Hackathon Starter',
+    subject: 'Ortak Payda İletişim',
     text: req.body.message
   };
 
