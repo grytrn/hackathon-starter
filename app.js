@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 const express = require('express');
-const https = require('https');
+const http = require('http');
 const compression = require('compression');
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -231,9 +231,8 @@ app.use(errorHandler());
 /**
  * Start Express server.
 */
-app.listen(app.get('port'), () => {
-  console.log('%s App is running at port: %d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
-  console.log('  Press CTRL-C to stop\n');
+http.createServer(app).listen(app.get('port'), function() {
+    console.log('Express server listening on port ' + app.get('port'));
 });
 
 
