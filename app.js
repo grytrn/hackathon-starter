@@ -234,5 +234,5 @@ app.listen(app.get('port'), () => {
   console.log('%s App is running at port: %d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
   console.log('  Press CTRL-C to stop\n');
 });*/
-https.createServer(options, app).listen(443);
+https.createServer(options, app).listen(app.get('port'));
 module.exports = app;
