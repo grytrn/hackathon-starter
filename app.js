@@ -22,7 +22,7 @@ const sass = require('node-sass-middleware');
 const multer = require('multer');
 const fs = require('fs');
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
-
+const enforce = require('express-sslify');
 const options = {
   key: fs.readFileSync('keys/key.pem'),
   cert: fs.readFileSync('keys/cert.pem')
@@ -223,20 +223,9 @@ app.get('/auth/pinterest/callback', passport.authorize('pinterest', { failureRed
 });
  */
  
- const forceSsl = function (req, res, next) {
-    if (req.headers['x-forwarded-proto'] !== 'https') {
-        return res.redirect(['https://', req.get('Host'), req.url].join(''));
-    }
-    return next();
- };
 
- app.use(function () {
-
-    if (process.env.NPM_CONFIG_PRODUCTION === true) {
-        app.use(forceSsl);
-		console.log('forcing ssl');
-    }
- });
+app.use(enforce.HTTPS({ trustProtoHeader: true }))
+app.use(enforce.HTTPS({ trustXForwardedHostHeader: true }))
 	
 /**
  * Error Handler.
