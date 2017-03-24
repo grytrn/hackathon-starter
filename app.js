@@ -222,6 +222,21 @@ app.get('/auth/pinterest/callback', passport.authorize('pinterest', { failureRed
   res.redirect('/api/pinterest');
 });
  */
+ 
+ const forceSsl = function (req, res, next) {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+        return res.redirect(['https://', req.get('Host'), req.url].join(''));
+    }
+    return next();
+ };
+
+ app.configure(function () {
+
+    if (process.env.NPM_CONFIG_PRODUCTION === true) {
+        app.use(forceSsl);
+		console.log('forcing ssl');
+    }
+	
 /**
  * Error Handler.
  */
@@ -229,11 +244,13 @@ app.use(errorHandler());
 
 /**
  * Start Express server.
-
+*/
 app.listen(app.get('port'), () => {
   console.log('%s App is running at port: %d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
   console.log('  Press CTRL-C to stop\n');
-});*/
-console.log(app.get('port'));
-https.createServer(options, app).listen(app.get('port'));
+});
+
+
+
+
 module.exports = app;
