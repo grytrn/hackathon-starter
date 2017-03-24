@@ -23,11 +23,7 @@ const multer = require('multer');
 const fs = require('fs');
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
 const enforce = require('express-sslify');
-const options = {
-  key: fs.readFileSync('keys/key.pem'),
-  cert: fs.readFileSync('keys/cert.pem')
-  //,ca: fs.readFileSync("/etc/letsencrypt/archive/example.com/chain1.pem")
-};
+
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -224,8 +220,8 @@ app.get('/auth/pinterest/callback', passport.authorize('pinterest', { failureRed
  */
  
 
-app.use(enforce.HTTPS({ trustProtoHeader: true }))
-app.use(enforce.HTTPS({ trustXForwardedHostHeader: true }))
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
+//app.use(enforce.HTTPS({ trustXForwardedHostHeader: true }));
 	
 /**
  * Error Handler.
