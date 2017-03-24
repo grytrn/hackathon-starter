@@ -236,6 +236,7 @@ app.get('/auth/pinterest/callback', passport.authorize('pinterest', { failureRed
         app.use(forceSsl);
 		console.log('forcing ssl');
     }
+ });
 	
 /**
  * Error Handler.
