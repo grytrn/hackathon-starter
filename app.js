@@ -230,7 +230,7 @@ app.get('/auth/pinterest/callback', passport.authorize('pinterest', { failureRed
     return next();
  };
 
- app.configure(function () {
+ app.use(function () {
 
     if (process.env.NPM_CONFIG_PRODUCTION === true) {
         app.use(forceSsl);
