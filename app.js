@@ -229,10 +229,11 @@ app.use(errorHandler());
 
 /**
  * Start Express server.
- 
+
 app.listen(app.get('port'), () => {
   console.log('%s App is running at port: %d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
   console.log('  Press CTRL-C to stop\n');
 });*/
+console.log(app.get('port'));
 https.createServer(options, app).listen(app.get('port'));
 module.exports = app;
