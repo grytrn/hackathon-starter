@@ -22,8 +22,7 @@ const sass = require('node-sass-middleware');
 const multer = require('multer');
 const fs = require('fs');
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
-//const enforce = require('express-sslify');
-
+const enforce = require('express-sslify');
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -101,6 +100,7 @@ app.use((req, res, next) => {
 });
 app.use((req, res, next) => {
   // After successful login, redirect back to the intended page
+  console.log('After successful login, redirect back to the intended page');
   if (!req.user &&
       req.path !== '/login' &&
       req.path !== '/signup' &&
@@ -114,6 +114,17 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+
+
+
+
+app.use(enforce.HTTPS({ trustProtoHeader: true }))
+
+/**
+ * Error Handler.
+ */
+app.use(errorHandler());
+
 
 /**
  * Primary app routes.
@@ -218,31 +229,7 @@ app.get('/auth/pinterest/callback', passport.authorize('pinterest', { failureRed
   res.redirect('/api/pinterest');
 });
  */
- 
-
-//app.use(enforce.HTTPS({ trustProtoHeader: true }));
-//app.use(enforce.HTTPS({ trustXForwardedHostHeader: true }));
 	
-/**
- * Error Handler.
- */
-app.use(errorHandler());
-app.use(function(){
-	console.log("IT WORKS");
-});
-
-app.use(function(req, res, next) {
-  var schema = req.headers['x-forwarded-proto'];
-  console.log(req.headers['x-forwarded-proto']);
-  if (schema === 'https') {
-    console.log("Already https; don't do anything special.");
-    next();
-  }
-  else {
-    console.log("Redirect to https.");
-    res.redirect('https://' + req.headers.host + req.url);
-  }
-});
 
 /**
  * Start Express server.
