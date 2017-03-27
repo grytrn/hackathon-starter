@@ -227,10 +227,13 @@ app.get('/auth/pinterest/callback', passport.authorize('pinterest', { failureRed
  * Error Handler.
  */
 app.use(errorHandler());
+app.use(function(){
+	console.log("IT WORKS");
+	});
 
 app.use(function(req, res, next) {
   var schema = req.headers['x-forwarded-proto'];
-
+  console.log(req.headers['x-forwarded-proto']);
   if (schema === 'https') {
     console.log("Already https; don't do anything special.");
     next();
