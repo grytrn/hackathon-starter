@@ -22,7 +22,7 @@ const sass = require('node-sass-middleware');
 const multer = require('multer');
 const fs = require('fs');
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
-const enforce = require('express-sslify');
+//const enforce = require('express-sslify');
 
 
 /**
@@ -220,13 +220,26 @@ app.get('/auth/pinterest/callback', passport.authorize('pinterest', { failureRed
  */
  
 
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
+//app.use(enforce.HTTPS({ trustProtoHeader: true }));
 //app.use(enforce.HTTPS({ trustXForwardedHostHeader: true }));
 	
 /**
  * Error Handler.
  */
 app.use(errorHandler());
+
+app.use(function(req, res, next) {
+  var schema = req.headers['x-forwarded-proto'];
+
+  if (schema === 'https') {
+    console.log("Already https; don't do anything special.");
+    next();
+  }
+  else {
+    console.log("Redirect to https.");
+    res.redirect('https://' + req.headers.host + req.url);
+  }
+});
 
 /**
  * Start Express server.
