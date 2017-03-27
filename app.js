@@ -229,7 +229,7 @@ app.get('/auth/pinterest/callback', passport.authorize('pinterest', { failureRed
 app.use(errorHandler());
 app.use(function(){
 	console.log("IT WORKS");
-	});
+});
 
 app.use(function(req, res, next) {
   var schema = req.headers['x-forwarded-proto'];
@@ -247,7 +247,8 @@ app.use(function(req, res, next) {
 /**
  * Start Express server.
 */
-http.createServer(app).listen(app.get('port'), function() {
+
+app.listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });
 
