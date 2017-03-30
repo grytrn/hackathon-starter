@@ -1,6 +1,39 @@
 extends ../layout
 
 block content
+  script.
+      var changeColor = function (value) {
+          var color, text;
+          switch (value) {
+              case '0':
+                  color = 'darkred';
+                  text = 'RADİKAL SOL';
+                  break;
+              case '1':
+                  color = 'red';
+                  text = 'SOL';
+                  break;
+              case '2':
+                  color = 'blue';
+                  text = 'LIBERAL';
+                  break;
+              case '3':
+                  color = 'orange';
+                  text = 'MERKEZ';
+                  break;
+              case '4':
+                  color = 'green';
+                  text = 'SAĞ';
+                  break;
+              case '5':
+                  color = 'darkgreen';
+                  text = 'RADİKAL SAĞ';
+                  break;
+          }
+          document.body.style.backgroundColor = color;
+          document.getElementById('labelPoliticalView').innerHTML= text;
+
+      }
   .page-header
     h3 Yeni bir hesap aç:
   form.form-horizontal(id='signup-form', method='POST')
@@ -17,6 +50,11 @@ block content
       label.col-sm-3.control-label(for='confirmPassword') Şifreyi Doğrula
       .col-sm-7
         input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Şifreyi Doğrula', required)
+    .form-group
+      label.col-sm-3.control-label(for='politicalView') Yakın Olduğun Görüş
+      .col-sm-7
+        input.form-control(type='range', name='politicalView', id='politicalView', min='0', max='5', step='1', value='3', oninput='changeColor(value)', required)
+        p(id='labelPoliticalView') MERKEZ
     .form-group
       .col-sm-offset-3.col-sm-7
         button.btn.btn-success(type='submit')

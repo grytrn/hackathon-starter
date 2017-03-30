@@ -85,10 +85,32 @@ exports.postSignup = (req, res, next) => {
     req.flash('errors', errors);
     return res.redirect('/signup');
   }
+  var text;
+    switch (req.body.politicalView) {
+        case '0':
+            text = 'RADİKAL SOL';
+            break;
+        case '1':
+            text = 'SOL';
+            break;
+        case '2':
+            text = 'LIBERAL';
+            break;
+        case '3':
+            text = 'MERKEZ';
+            break;
+        case '4':
+            text = 'SAĞ';
+            break;
+        case '5':
+            text = 'RADİKAL SAĞ';
+            break;
+    }
 
   const user = new User({
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    politicalView: text,
   });
 
   User.findOne({ email: req.body.email }, (err, existingUser) => {

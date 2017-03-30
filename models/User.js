@@ -27,12 +27,12 @@ const userSchema = new mongoose.Schema({
   politicalView: {
 	type: String,
 	enum: [
-        'RADIKAL SOL',
+        'RADİKAL SOL',
         'SOL',
         'LIBERAL',
         'MERKEZ',
         'SAĞ',
-        'RADIKAL SAĞ'
+        'RADİKAL SAĞ'
     ],
 	default: 'MERKEZ'
   }
