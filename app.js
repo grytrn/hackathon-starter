@@ -2,7 +2,6 @@
  * Module dependencies.
  */
 const express = require('express');
-const http = require('http');
 const compression = require('compression');
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -20,7 +19,6 @@ const expressValidator = require('express-validator');
 const expressStatusMonitor = require('express-status-monitor');
 const sass = require('node-sass-middleware');
 const multer = require('multer');
-const fs = require('fs');
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
 const enforce = require('express-sslify');
 
@@ -100,7 +98,6 @@ app.use((req, res, next) => {
 });
 app.use((req, res, next) => {
   // After successful login, redirect back to the intended page
-  console.log('After successful login, redirect back to the intended page');
   if (!req.user &&
       req.path !== '/login' &&
       req.path !== '/signup' &&
@@ -116,10 +113,12 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
 
+console.log(app.get('env'));
 
 
-app.use(enforce.HTTPS({ trustProtoHeader: true }))
-
+if(app.get('env') != "development"){
+	app.use(enforce.HTTPS({ trustProtoHeader: true }));
+}
 /**
  * Error Handler.
  */
@@ -236,7 +235,8 @@ app.get('/auth/pinterest/callback', passport.authorize('pinterest', { failureRed
 */
 
 app.listen(app.get('port'), function() {
-    console.log('Express server listening on port ' + app.get('port'));
+  console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
+  console.log('  Press CTRL-C to stop\n');
 });
 
 
