@@ -23,6 +23,18 @@ const userSchema = new mongoose.Schema({
     location: String,
     website: String,
     picture: String
+  },
+  politicalView: {
+	type: String,
+	enum: [
+        'RADIKAL SOL',
+        'SOL',
+        'LIBERAL',
+        'MERKEZ',
+        'SAĞ',
+        'RADIKAL SAĞ'
+    ],
+	default: 'MERKEZ'
   }
 }, { timestamps: true });
 
